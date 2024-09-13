@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from www.wisemove.co.nz/widget/volume-calculator by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Sep 2024 22:06:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>Volume Calculator | Wise Move</title>
+    <meta name="description" content="Wise Move - home hovers & moving companies in Auckland and NZ">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=1">
+    <style>
+        @font-face {
+            font-family: 'Mallory';
+            src: url('https://www.wisemove.co.nz/css/font/mallory/Mallory-Light.woff') format('woff');
+            font-weight: 200;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Mallory';
+            src: url('https://www.wisemove.co.nz/css/font/mallory/Mallory-Medium.woff') format('woff');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Mallory';
+            src: url('https://www.wisemove.co.nz/css/font/mallory/Mallory-Bold.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        body{
+            margin: 0;
+            font-family: 'Mallory';
+            font-weight: 200;
+            color: #222222;
+        }
+
+            :root{
+                scrollbar-color: #6b6b6a transparent !important;
+                scrollbar-width: thin !important;
+            }
+
+            body::-webkit-scrollbar{
+                height:10px;
+                width:10px;
+                border-radius: 4px;
+                background: transparent;
+                transition: all 0.3s ease;
+            }
+
+            body::-webkit-scrollbar-thumb{
+                background:#6b6b6a;
+                border-radius: 4px;
+            }
+
+        a{
+            text-decoration: none;
+            color: #222222;
+        }
+
+        a:hover{
+            text-decoration: underline !important;
+        }
+
+        .logo{
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 160px;
+            height: 12px;
+            right: 30px;
+            background-position: right;
+            top: 25px;
+            opacity: 0.2;
+        }
+
+            @media (max-width: 440px){
+                .logo{
+                    right: 10px;
+                    top: 20px;
+                    height: 8px;
+                    display: none;
+                }
+            }
+
+        .as-link{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+            .as-link:hover{
+                text-decoration: none!important;
+            }
+
+        .menu{
+            overflow: hidden;
+            margin: 0 0 10px 0;
+        }
+
+            .menu .button{
+                float: left;
+                background: #6b6b6a;
+                color: white;
+                padding: 6px 10px;
+                border-radius: 3px;
+                margin: 0px 10px 10px 0;
+                cursor: pointer;
+                font-weight: 500;
+            }
+
+            .menu .button:hover,
+            .menu .button.selected{
+                background: #008489;
+            }
+
+        .total{
+            font-weight: 500;
+            margin: 10px 0 10px 0;
+            font-size: 22px;
+        }
+
+            .total strong{
+                font-weight: 800;
+            }
+
+        .categories .inventory:first-child{
+            display: block;
+        }
+
+        #inventory-search{
+            display: flex;
+            align-items: center;
+            margin: 0 0 20px 0;
+        }
+
+            #inventory-search .t{
+                font-weight: 300;
+                margin: 0 20px 0 0;
+                font-size: 18px;
+            }
+
+            #inventory-search .search-field{
+                position: relative;
+            }
+
+                #inventory-search .search-field input[type=text]{
+                    width: 280px;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    box-sizing: border-box;
+                    padding: 4px 14px;
+                    font-weight: 500;
+                    border-radius: 2px;
+                    border: 1px solid rgba(107, 107, 106, 0.4);
+                    font-family: 'Mallory'!important;
+                    font-size: 15px;
+                }
+
+                #inventory-search .search-field .results{
+                    display: none;
+                    background: #6b6b6a;
+                    color: white;
+                    border-radius: 3px;
+                    position: absolute;
+                    top: 34px;
+                    width: 100%;
+                    padding: 20px 30px;
+                    max-height: 160px;
+                    overflow-y: auto;
+                }
+
+                    #inventory-search .search-field .results::-webkit-scrollbar{
+                        height:10px;
+                        width:10px;
+                        border-radius: 4px;
+                        background: transparent;
+                        transition: all 0.3s ease;
+                    }
+
+                    #inventory-search .search-field .results::-webkit-scrollbar-thumb{
+                        background:#008489;
+                        border-radius: 4px;
+                    }
+
+                    #inventory-search .search-field .results .result{
+                        margin-bottom: 10px;
+                        cursor: pointer;
+                    }
+
+                    #inventory-search .search-field .results .result:hover{
+                        text-decoration: underline;
+                    }
+
+        .inventory{
+            overflow: hidden;
+            display: none;
+        }
+
+            .inventory .item{
+                float: left;
+                display: flex;
+                justify-content: space-between;
+                min-width: 25%;
+                max-width: 25%;
+                padding: 0 30px 10px 0;
+                box-sizing: border-box;
+                align-items: center;
+                width: 100%;
+            }
+
+                @media (min-width: 768px) {
+                    .inventory .item:nth-child(4n+5){
+                        clear: both;
+                    }
+                }
+
+                @media (min-width: 440px) and (max-width: 768px) {
+                    .inventory .item{
+                        max-width: 50%!important;
+                    }
+
+                    .inventory .item:nth-child(2n+3){
+                        clear: both;
+                    }
+                }
+
+                @media (max-width: 440px){
+                    .inventory .item{
+                        max-width: 100%!important;
+                    }
+                }
+
+                .inventory .item .title{
+                    padding-right: 6px;
+                }
+
+                .inventory .item input{
+                    width: 60px;
+                    text-align: center;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    box-sizing: border-box;
+                    padding: 4px 14px;
+                    font-weight: 500;
+                    border-radius: 2px;
+                    border: 1px solid rgba(107, 107, 106, 0.4);
+                    font-family: 'Mallory'!important;
+                    font-size: 15px;
+                }
+
+                    .inventory .item input::-webkit-outer-spin-button,
+                    .inventory .item input::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+
+                    .inventory .item input[type=number] {
+                        -moz-appearance: textfield;
+                    }
+
+        .disclaimer{
+            display: block;
+            margin: 10px 0 0 0;
+            font-size: 15px;
+            font-weight: 200;
+        }
+
+        @media only screen and (max-width: 500px) {
+            .disclaimer{
+                font-size: 14px;
+            }
+
+            .inventory .item{
+                width: 100%;
+                padding-right: 10px;
+            }
+
+            .menu .button{
+                font-weight: 300;
+                font-size: 13px;
+                margin: 0px 5px 5px 0;
+                padding: 6px 8px;
+            }
+
+            #inventory-search{
+                display: block;
+                padding-right: 10px;
+            }
+
+                #inventory-search .search-field input[type=text] {
+                    width: 100%;
+                }
+
+                #inventory-search > div{
+                    padding-right: 0;
+                }
+        }
+    </style>
+</head>
+<body>
+
+<a 
+href="#" class="logo" title="Wise Move" style="background-image: url(./favicon.jpg); opacity: 1; height: 30px; width: 150px;" target="_blank"></a>
+
+<div class="total">
+    Total volume
+    <span class="m3">
+        <strong><span class="number">0</span></strong>m<sup>3</sup>
+    </span>
+    /
+    <span class="ft3">
+        <strong><span class="number">0</span></strong>ft<sup>3</sup>
+    </span>
+
+    <div class="disclaimer">
+        Inventory volume calculator figures are only estimates.
+    </div>
+</div>
+
+<div class="menu">
+    <div class="button selected" data-category="living-room">Living Room <span></span></div>
+    <div class="button" data-category="office">Office <span></span></div>
+    <div class="button" data-category="kitchen">Kitchen <span></span></div>
+    <div class="button" data-category="bedroom">Bedroom <span></span></div>
+    <div class="button" data-category="bathroom">Bathroom <span></span></div>
+    <div class="button" data-category="outdoor">Outdoor <span></span></div>
+    <div class="button" data-category="other">Misc <span></span></div>
+</div>
+
+<form id="inventory-search">
+    <div class="t">Can't find item?</div>
+    <div class="search-field">
+        <input type="text" placeholder="Search here">
+        <div class="results"></div>
+    </div>
+</form>
+
+<div class="categories">
+            <div class="inventory" data-category="living-room">
+                            <div class="item">
+                    <div class="title">Armchair</div>
+                    <input type="number" placeholder="0" data-volume="0.294">
+                </div>
+                            <div class="item">
+                    <div class="title">Box</div>
+                    <input type="number" placeholder="0" data-volume="0.125">
+                </div>
+                            <div class="item">
+                    <div class="title">Cabinet</div>
+                    <input type="number" placeholder="0" data-volume="0.39715">
+                </div>
+                            <div class="item">
+                    <div class="title">Coffee/side table</div>
+                    <input type="number" placeholder="0" data-volume="0.136125">
+                </div>
+                            <div class="item">
+                    <div class="title">Dining chair</div>
+                    <input type="number" placeholder="0" data-volume="0.22419">
+                </div>
+                            <div class="item">
+                    <div class="title">Dining table</div>
+                    <input type="number" placeholder="0" data-volume="0.5184">
+                </div>
+                            <div class="item">
+                    <div class="title">Rug</div>
+                    <input type="number" placeholder="0" data-volume="0.8">
+                </div>
+                            <div class="item">
+                    <div class="title">Sideboard</div>
+                    <input type="number" placeholder="0" data-volume="0.9139">
+                </div>
+                            <div class="item">
+                    <div class="title">Sofa 2-seat </div>
+                    <input type="number" placeholder="0" data-volume="1.615">
+                </div>
+                            <div class="item">
+                    <div class="title">Sofa 3-seat</div>
+                    <input type="number" placeholder="0" data-volume="2.3275">
+                </div>
+                            <div class="item">
+                    <div class="title">Sofa 4-seat</div>
+                    <input type="number" placeholder="0" data-volume="1.47">
+                </div>
+                            <div class="item">
+                    <div class="title">Sofa L-shaped corner</div>
+                    <input type="number" placeholder="0" data-volume="1.4">
+                </div>
+                            <div class="item">
+                    <div class="title">TV</div>
+                    <input type="number" placeholder="0" data-volume="0.0196">
+                </div>
+                            <div class="item">
+                    <div class="title">TV stand</div>
+                    <input type="number" placeholder="0" data-volume="0.2304">
+                </div>
+                    </div>
+            <div class="inventory" data-category="office">
+                            <div class="item">
+                    <div class="title">Bin</div>
+                    <input type="number" placeholder="0" data-volume="0.101728">
+                </div>
+                            <div class="item">
+                    <div class="title">Bookcase</div>
+                    <input type="number" placeholder="0" data-volume="0.3024">
+                </div>
+                            <div class="item">
+                    <div class="title">Box</div>
+                    <input type="number" placeholder="0" data-volume="0.125">
+                </div>
+                            <div class="item">
+                    <div class="title">Cabinet</div>
+                    <input type="number" placeholder="0" data-volume="0.39715">
+                </div>
+                            <div class="item">
+                    <div class="title">Chair</div>
+                    <input type="number" placeholder="0" data-volume="0.33">
+                </div>
+                            <div class="item">
+                    <div class="title">Desk</div>
+                    <input type="number" placeholder="0" data-volume="0.572">
+                </div>
+                            <div class="item">
+                    <div class="title">Desk printer</div>
+                    <input type="number" placeholder="0" data-volume="0.064">
+                </div>
+                            <div class="item">
+                    <div class="title">Drawer unit</div>
+                    <input type="number" placeholder="0" data-volume="0.11">
+                </div>
+                            <div class="item">
+                    <div class="title">Filing cabinet</div>
+                    <input type="number" placeholder="0" data-volume="0.155664">
+                </div>
+                            <div class="item">
+                    <div class="title">Large ground printer</div>
+                    <input type="number" placeholder="0" data-volume="0.4761">
+                </div>
+                            <div class="item">
+                    <div class="title">PC</div>
+                    <input type="number" placeholder="0" data-volume="0.08">
+                </div>
+                    </div>
+            <div class="inventory" data-category="kitchen">
+                            <div class="item">
+                    <div class="title">Box</div>
+                    <input type="number" placeholder="0" data-volume="0.125">
+                </div>
+                            <div class="item">
+                    <div class="title">Coffee machine</div>
+                    <input type="number" placeholder="0" data-volume="0.058497">
+                </div>
+                            <div class="item">
+                    <div class="title">Dishwasher</div>
+                    <input type="number" placeholder="0" data-volume="0.3024">
+                </div>
+                            <div class="item">
+                    <div class="title">Extractor fan</div>
+                    <input type="number" placeholder="0" data-volume="0.27">
+                </div>
+                            <div class="item">
+                    <div class="title">Fridge freezer</div>
+                    <input type="number" placeholder="0" data-volume="0.6438">
+                </div>
+                            <div class="item">
+                    <div class="title">Kitchen chair</div>
+                    <input type="number" placeholder="0" data-volume="0.22419">
+                </div>
+                            <div class="item">
+                    <div class="title">Kitchen island</div>
+                    <input type="number" placeholder="0" data-volume="0.84">
+                </div>
+                            <div class="item">
+                    <div class="title">Kitchen table</div>
+                    <input type="number" placeholder="0" data-volume="0.5775">
+                </div>
+                            <div class="item">
+                    <div class="title">Microwave</div>
+                    <input type="number" placeholder="0" data-volume="0.093296">
+                </div>
+                            <div class="item">
+                    <div class="title">Oven</div>
+                    <input type="number" placeholder="0" data-volume="0.178752">
+                </div>
+                            <div class="item">
+                    <div class="title">Tumble dryer</div>
+                    <input type="number" placeholder="0" data-volume="0.2208">
+                </div>
+                            <div class="item">
+                    <div class="title">Washing machine</div>
+                    <input type="number" placeholder="0" data-volume="0.3024">
+                </div>
+                    </div>
+            <div class="inventory" data-category="bedroom">
+                            <div class="item">
+                    <div class="title">Bedroom bench</div>
+                    <input type="number" placeholder="0" data-volume="0.2">
+                </div>
+                            <div class="item">
+                    <div class="title">Bedside table</div>
+                    <input type="number" placeholder="0" data-volume="0.13">
+                </div>
+                            <div class="item">
+                    <div class="title">Box</div>
+                    <input type="number" placeholder="0" data-volume="0.125">
+                </div>
+                            <div class="item">
+                    <div class="title">Bunk beds</div>
+                    <input type="number" placeholder="0" data-volume="3.1">
+                </div>
+                            <div class="item">
+                    <div class="title">Chest of drawers</div>
+                    <input type="number" placeholder="0" data-volume="0.48">
+                </div>
+                            <div class="item">
+                    <div class="title">Double bed</div>
+                    <input type="number" placeholder="0" data-volume="1.68">
+                </div>
+                            <div class="item">
+                    <div class="title">Double bed mattress</div>
+                    <input type="number" placeholder="0" data-volume="0.5206">
+                </div>
+                            <div class="item">
+                    <div class="title">Night lamp</div>
+                    <input type="number" placeholder="0" data-volume="0.016">
+                </div>
+                            <div class="item">
+                    <div class="title">Single bed mattress</div>
+                    <input type="number" placeholder="0" data-volume="0.3458">
+                </div>
+                            <div class="item">
+                    <div class="title">Wardrobe</div>
+                    <input type="number" placeholder="0" data-volume="1.26">
+                </div>
+                    </div>
+            <div class="inventory" data-category="bathroom">
+                            <div class="item">
+                    <div class="title">Bathroom cabinet</div>
+                    <input type="number" placeholder="0" data-volume="0.0972">
+                </div>
+                            <div class="item">
+                    <div class="title">Box</div>
+                    <input type="number" placeholder="0" data-volume="0.125">
+                </div>
+                            <div class="item">
+                    <div class="title">Mirror</div>
+                    <input type="number" placeholder="0" data-volume="0.003">
+                </div>
+                    </div>
+            <div class="inventory" data-category="outdoor">
+                            <div class="item">
+                    <div class="title">BBQ</div>
+                    <input type="number" placeholder="0" data-volume="0.6">
+                </div>
+                            <div class="item">
+                    <div class="title">Garden bench</div>
+                    <input type="number" placeholder="0" data-volume="0.54272">
+                </div>
+                            <div class="item">
+                    <div class="title">Garden chair</div>
+                    <input type="number" placeholder="0" data-volume="0.24">
+                </div>
+                            <div class="item">
+                    <div class="title">Garden corner sofa</div>
+                    <input type="number" placeholder="0" data-volume="1.2">
+                </div>
+                            <div class="item">
+                    <div class="title">Garden shredder</div>
+                    <input type="number" placeholder="0" data-volume="0.150858">
+                </div>
+                            <div class="item">
+                    <div class="title">Garden table</div>
+                    <input type="number" placeholder="0" data-volume="1.2">
+                </div>
+                            <div class="item">
+                    <div class="title">Kids trampoline</div>
+                    <input type="number" placeholder="0" data-volume="0.324">
+                </div>
+                            <div class="item">
+                    <div class="title">Outdoor pot</div>
+                    <input type="number" placeholder="0" data-volume="0.108">
+                </div>
+                            <div class="item">
+                    <div class="title">Parasol</div>
+                    <input type="number" placeholder="0" data-volume="0.099">
+                </div>
+                            <div class="item">
+                    <div class="title">Plant pot</div>
+                    <input type="number" placeholder="0" data-volume="0.012168">
+                </div>
+                            <div class="item">
+                    <div class="title">Sunbed chairs</div>
+                    <input type="number" placeholder="0" data-volume="0.18">
+                </div>
+                    </div>
+            <div class="inventory" data-category="other">
+                            <div class="item">
+                    <div class="title">Alloy wheel</div>
+                    <input type="number" placeholder="0" data-volume="0.098">
+                </div>
+                            <div class="item">
+                    <div class="title">Baby grand piano</div>
+                    <input type="number" placeholder="0" data-volume="2.263">
+                </div>
+                            <div class="item">
+                    <div class="title">Bag</div>
+                    <input type="number" placeholder="0" data-volume="0.07425">
+                </div>
+                            <div class="item">
+                    <div class="title">Bicycle</div>
+                    <input type="number" placeholder="0" data-volume="0.173448">
+                </div>
+                            <div class="item">
+                    <div class="title">Bin</div>
+                    <input type="number" placeholder="0" data-volume="0.101728">
+                </div>
+                            <div class="item">
+                    <div class="title">Box</div>
+                    <input type="number" placeholder="0" data-volume="0.125">
+                </div>
+                            <div class="item">
+                    <div class="title">Hoover</div>
+                    <input type="number" placeholder="0" data-volume="0.045288">
+                </div>
+                            <div class="item">
+                    <div class="title">Ironing board</div>
+                    <input type="number" placeholder="0" data-volume="0.055223">
+                </div>
+                            <div class="item">
+                    <div class="title">Ladder</div>
+                    <input type="number" placeholder="0" data-volume="0.0925">
+                </div>
+                            <div class="item">
+                    <div class="title">Pool table</div>
+                    <input type="number" placeholder="0" data-volume="1.8144">
+                </div>
+                            <div class="item">
+                    <div class="title">Quad bike</div>
+                    <input type="number" placeholder="0" data-volume="2.46038">
+                </div>
+                            <div class="item">
+                    <div class="title">Sewing machine</div>
+                    <input type="number" placeholder="0" data-volume="0.1813">
+                </div>
+                            <div class="item">
+                    <div class="title">Shoe rack</div>
+                    <input type="number" placeholder="0" data-volume="0.13125">
+                </div>
+                            <div class="item">
+                    <div class="title">Stool</div>
+                    <input type="number" placeholder="0" data-volume="0.081">
+                </div>
+                            <div class="item">
+                    <div class="title">Suitcase</div>
+                    <input type="number" placeholder="0" data-volume="0.08775">
+                </div>
+                            <div class="item">
+                    <div class="title">Treadmill</div>
+                    <input type="number" placeholder="0" data-volume="2.625">
+                </div>
+                            <div class="item">
+                    <div class="title">Upright piano</div>
+                    <input type="number" placeholder="0" data-volume="1.15729">
+                </div>
+                    </div>
+    </div>
+
+<script src="../../ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("body").on("click", ".menu .button", function() {
+        category = $(this).attr("data-category");
+        $(".categories .inventory").hide();
+        $(".menu .button").removeClass("selected");
+        $(this).addClass("selected");
+        $(".categories .inventory[data-category="+category+"]").show();
+    });
+
+    $("body").on("change", ".inventory .item input", function() {
+        volume = 0;
+        $(".categories .inventory").each(function( index ) {
+            category = $(this).attr("data-category");
+            cat_total = 0;
+            $(".categories .inventory[data-category="+category+"] input").each(function( index ) {
+                if(parseInt($(this).val()) > 0){
+                    cat_total = cat_total + parseInt($(this).val());
+                    volume = volume + (parseInt($(this).val()) * parseFloat($(this).attr("data-volume")));
+                }
+            });
+
+            if(cat_total > 0){
+                $(".menu .button[data-category="+category+"] span").html("("+cat_total+")");
+            }else{
+                $(".menu .button[data-category="+category+"] span").html("");
+            }
+        });
+
+        // Update total volume
+        $(".total span.m3 .number").html(volume.toFixed(2));
+        $(".total span.ft3 .number").html((volume * 35.3147).toFixed(1));
+    });
+
+    //
+    $("#inventory-search").submit(function(e){
+        e.preventDefault();
+    });
+
+    //
+    var timer_kjohuigyufty = null;
+    $("#inventory-search .search-field input[type=text]").on("keydown", function() {
+        clearTimeout(timer_kjohuigyufty);
+        timer_kjohuigyufty = setTimeout(function() {
+            $.ajax({
+                method: "GET",
+                url: "https://www.wisemove.co.nz/widget/volume-calculator?search=1",
+                data: {
+                    keyword: $("#inventory-search input").val(),
+                },
+                beforeSend: function() {
+                },
+                success: function(data){
+                    if(data.results){
+                        $('#inventory-search .search-field .results').html(data.results);
+                        $("#inventory-search .search-field .results").show();
+                    }else{
+                        $('#inventory-search .search-field .results').html('No results found.');
+                        $("#inventory-search .search-field .results").show();
+                    }
+                }
+            });
+        }, 500);
+    });
+
+    //
+    $("body").on("click", "#inventory-search .search-field .results .result", function() {
+        fdfdf = '<div class="item"><div class="title">'+$(this).attr('data-title')+'</div> <input type="number" value="1" placeholder="0" data-volume="'+$(this).attr('data-volume')+'"></div>';
+        $(".categories .inventory:visible").prepend(fdfdf);
+        $(".categories .inventory input").first().change();
+        $("#inventory-search .search-field .results").hide();
+        $("#inventory-search .search-field input[type=text]").val("");
+    });
+
+    // On HTML document body click
+    $(document).click(function(e)
+    {
+        if ( $(e.target).closest('#inventory-search .search-field .results').length === 0 ) {
+            $("#inventory-search .search-field input[type=text]").val("");
+            $("#inventory-search .search-field .results").hide();
+        }
+    });
+});
+</script>
+
+</body>
+
+<!-- Mirrored from www.wisemove.co.nz/widget/volume-calculator by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Sep 2024 22:06:51 GMT -->
+</html>

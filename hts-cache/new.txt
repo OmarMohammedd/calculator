@@ -1,0 +1,5 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+01:06:49	30313/30313	---M-Z	200	added ('OK')	text/html	date:Fri,%2013%20Sep%202024%2022:06:51%20GMT	https://www.wisemove.co.nz/widget/volume-calculator	D:/calculator/www.wisemove.co.nz/widget/volume-calculator.html	(from )
+01:06:49	13/13	---M--	200	added ('OK')	text/plain	date:Sat,%2029%20Apr%202023%2012:37:20%20GMT	https://www.wisemove.co.nz/robots.txt		(from )
+01:06:50	19415/19415	---M--	200	added ('OK')	image/png	etag:%2231c560e12f09be9b26f546af69483972%22	https://cdn.wisemove.co.nz/asset/image/logo.png	D:/calculator/cdn.wisemove.co.nz/asset/image/logo.png	(from https://www.wisemove.co.nz/widget/volume-calculator)
+01:06:51	87533/87533	---M--	200	added ('OK')	text/javascript	date:Tue,%2012%20Sep%202023%2002:38:22%20GMT	https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js	D:/calculator/ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js	(from https://www.wisemove.co.nz/widget/volume-calculator)

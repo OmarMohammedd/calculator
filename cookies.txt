@@ -1,0 +1,5 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+www.wisemove.co.nz	TRUE	/	FALSE	1999999999	flp	%2Fwidget%2Fvolume-calculator
+www.wisemove.co.nz	TRUE	/	FALSE	1999999999	wise_move_session	eyJpdiI6IkhtaHpuUm5ReDJmNlFITmtrakFXdVE9PSIsInZhbHVlIjoiam1PSmtZUWlEUU9mSTlPenN2TXNxNm1hb3dKOGVlTlRxN3JNY29xYnptUzVMWnVoeEc1ZUdrdy9pa3FPYW5seVQ4OWdPa05kS04rWTBMWnpZZGZwK0g0ZmhOUi9Sc05qUUtESDhhMERJUkRCdndMMk5ta0EvSG91c2MzUFF1eEgiLCJtYWMiOiI3NTE4MTQxODEyNDIzYzk0OTZhYmQyNDg5Y2FlZGRjNjEwMWY5NGUzODU3MTZhNTk5OGQ5Y2MwYzhkYmQxY2ZlIiwidGFnIjoiIn0%3D
+
